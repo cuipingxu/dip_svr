@@ -1,0 +1,25 @@
+{"head":{"cmd":"cmd1", "service_id":"bfwz", "server_id":"100"}, "body":{"user_id":"xcp"}}
+{"head":{"cmd":"cmd1", "time":1415180700, "msg_id":"DIP_Router_127.0.0.1_5000_2", "err":0, "err_info":"no error"}, "body":"it is test"}
+
+
+{"head":{"cmd":"cmd1", "time":111111, "req_id":"xxxxxx", "channel":"bx", "peer":"127.0.0.1:5500", "service_id":"bfwz", "server_id":"100"}, "body":{"user_id":"xcp"}}
+{"head":{"cmd":"cmd1", "time":1415180711, "req_id":"xxxxxx", "msg_id":"DIP_Router_127.0.0.1_5000_4", "err":0, "err_info":"no error"}, "body":"it is test"}
+
+
+{"head":{"cmd":"register", "service_id":"bfwz", "server_id":"100"}, "body":"username=1111&time=2222&serverid=33333"}
+{"head":{"cmd":"pay", "service_id":"bfwz", "server_id":"100"}, "body":"username=1111&time=2222&serverid=33333"}
+
+
+正确
+{"head":{"cmd":"test", "service_id":"bfwz", "server_id":"100"}, "body":"site=R2Games&game=bfwz&serverid=100&username=1111&invite=0&time=2222&cm=33333&type=0"}
+{"head":{"cmd":"test", "time":1415590381, "msg_id":"DIP_Router_127.0.0.1_5000_2", "err":0, "err_info":""}, "body":{"head":{"cmd":"test"}, "body":"msg=it is test"}}
+
+
+找不到worker
+{"head":{"cmd":"test", "service_id":"bfwz1", "server_id":"100"}, "body":"username=1111&time=2222&serverid=33333"}
+{"head":{"cmd":"test", "time":1415590449, "msg_id":"DIP_Router_127.0.0.1_5000_6", "err":-598, "err_info":"get worker failed."}}
+
+
+非法请求
+{"head":{"cmd":"test", }, "body":"username=1111&time=2222&serverid=33333"}
+{"head":{"cmd":"null", "time":1415590517, "req_id":"null", "msg_id":"DIP_Router_127.0.0.1_5000_9", "err":-198, "err_info":"get req head failed."}}

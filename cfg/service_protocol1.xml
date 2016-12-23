@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<protocols>
+
+	<system>
+		<key>123456</key>
+		<conn_timeout>123456</conn_timeout>
+		<rw_timeout>123456</rw_timeout>
+	</system>
+
+	<!-- 统一接入入口 -->
+	<protocol cmd="unique" mode="http_get,https_get,http_port,https_port" url="http://res-yitien.r2games.com/start.php" key="12345" conn_timeout="3" rw_timeout="3" desc="it is test" />
+		
+	<!-- 注册消息 -->
+	<protocol cmd="register" mode="http_get" url="http://res-yitien.r2games.com/start.php" key="12345" conn_timeout="3" rw_timeout="3" desc="register new user" />
+	
+	<!-- 支付消息 -->
+	<protocol cmd="pay" mode="https_get" url="http://[sss]-res-yitien.r2games.com/start.php" key="23456" conn_timeout="3" rw_timeout="3" desc="pay" />
+	
+</protocols>

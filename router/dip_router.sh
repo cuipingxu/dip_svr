@@ -1,0 +1,1 @@
+./dip_svr.bin -id 192.168.14.198_7700 -req_port 7700 -thr_num 4 -max_size 1000

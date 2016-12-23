@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dip_router>
+
+	<system>
+		<id>DIP_Router_127.0.0.1_5000</id>
+		<req_port>7000</req_port>
+		<worker_port>8000</worker_port>
+		<unregister_failed_num>3</unregister_failed_num>
+		<unregister_timeout_num>5</unregister_timeout_num>
+		<thr_num>3</thr_num>
+		<max_queue_size>100000</max_queue_size>
+	</system>
+	
+</dip_router>

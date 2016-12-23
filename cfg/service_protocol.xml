@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<protocol>
+
+	<system>
+		<version>1.0</version>
+		<service>BFWZ</service>
+		<encoding>utf-8</encoding>
+		<sec_key>ABCDEFG</sec_key>
+		<packet_type>json,kv</packet_type>
+		<!-- 统一接入入口 -->
+		<access mode="http_get,https_get,http_port,https_port,tcp_long,tcp_short" url="http://res-yitien.r2games.com/start.php" ip="127.0.0.1" port="5500" conn_timeout="3" rw_timeout="3" />
+	</system>
+
+	<!-- obj 不支持嵌套 -->
+	<obj name="obj1"  desc="it is test" >
+		<field name="test1" seq="1" type="int32" required="true" default="-100" desc="filed test1" />
+		<field name="test2" seq="2" type="int64" required="true" default="-100" desc="filed test2" />
+		<field name="test3" seq="3" type="uint32" required="true" default="100" desc="filed test3" />
+		<field name="test4" seq="4" type="uint64" required="false" default="100" desc="filed test4" />			
+		<field name="test5" seq="5" type="double" required="true" default="100.0" desc="filed test5" />
+		<field name="test6" seq="6" type="string" size="100" required="false" default="123456" desc="filed test6" />
+		<field name="test7" seq="7" type="string" required="false" default="123456" desc="filed test7" />
+		<field name="test8" seq="8" type="obj" sub_type="obj1" required="false" desc="filed test8" />
+		<field name="test9" seq="9" type="list" sub_type="obj1" size="2" required="false" desc="filed test9" />
+	</obj>
+	
+	<!-- 注册消息 -->
+	<msg name="register" sec_key="123" desc="it is test" >
+	
+		<!-- 特定接入入口 -->
+		<access mode="http_get,https_get,http_port,https_port,tcp_long,tcp_short" url="http://res-yitien.r2games.com/start.php" ip="127.0.0.1" port="5500" conn_timeout="3" rw_timeout="3" />
+		
+		<req cmd="register_req" protocol="kv" desc="register req" >
+			<field name="site" seq="1" type="int32" required="false" default="123456" desc="平台编号默认R2Games" />
+			<field name="serverid" seq="2" type="int64" required="false" default="123456" desc="服务器ID" />
+			<field name="username" seq="3" type="uint32" required="false" default="123456" desc="R2Games平台账号" />
+			<field name="invite" seq="4" type="uint64" required="false" default="123456" desc="邀请者,默认为0" />			
+			<field name="time" seq="5" type="double" required="false" default="123456" desc="Unix时间戳,超时验证，10分钟内有效" />
+			<field name="sign" seq="6" type="sign" required="false" default="123456" desc="加密串,md5(username+time+serverid+md5(key+site))" />
+			<field name="cm" seq="7" type="string" size="100" required="false" default="123456" desc="防沉迷1.已满18,0未满18,提示玩家(预留字段,默认为1)" />
+			<field name="type" seq="8" type="string" required="false" default="123456" desc="登录类型(可根据参数不同值开关游戏内的一些功能)" />
+		</req>
+		 
+		<rsp cmd="register_rsp" protocol="json" desc="register rsp" >
+		</rsp>
+		
+	</msg>
+
+	<!-- 查询角色详细信息 -->
+	<msg name="query_role" sec_key="123" desc="it is test" >
+	
+		<!-- 特定接入入口 -->
+		<access mode="http_get,https_get,http_port,https_port,tcp_long,tcp_short" url="http://res-yitien.r2games.com/start.php" ip="127.0.0.1"  port="5500" conn_timeout="3" rw_timeout="3" />
+		
+		<req cmd="query_role_req" protocol="kv" desc="query role req" >
+			<field name="site" seq="1" type="int32" required="false" default="123456" desc="it is test" />
+			<field name="serverid" seq="2" type="int64" required="false" default="123456" desc="it is test" />
+			<field name="username" seq="3" type="uint32" required="false" default="123456" desc="it is test" />		
+			<field name="time" seq="5" type="double" required="false" default="123456" desc="it is test" />
+		</req>
+		 
+		<rsp cmd="query_role_rsp" protocol="json" desc="query role rsp" >
+			<field name="username" seq="1" type="int32" required="true" default="0" desc="用户名(R2Games)" />
+			<field name="roleid" seq="2" type="string" size="100" required="false" default="it is ok" desc="角色ID(游戏内)" />
+			<field name="rolename" seq="1" type="int32" required="true" default="0" desc="角色名称(游戏内)" />
+			<field name="level" seq="2" type="string" size="100" required="false" default="it is ok" desc="玩家等级" />	
+			<field name="online" seq="1" type="int32" required="true" default="0" desc="玩家等级" />
+			<field name="amount" seq="2" type="string" size="100" required="false" default="it is ok" desc="是否在线1.在线2.离线" />	
+			<field name="getcoin" seq="1" type="int32" required="true" default="0" desc="累计充值金额" />
+			<field name="lastpaytime" seq="2" type="string" size="100" required="false" default="it is ok" desc="最后一次充值时间" />
+			<field name="remaincoin" seq="2" type="string" size="100" required="false" default="it is ok" desc="剩余货币" />	
+			<field name="lastlogintime" seq="1" type="int32" required="true" default="0" desc="最后一次登录游戏服时间" />
+			<field name="regtime" seq="2" type="string" size="100" required="false" default="it is ok" desc="注册时间" />		
+		</rsp>
+		
+	</msg>
+	
+	
+</protocol>
